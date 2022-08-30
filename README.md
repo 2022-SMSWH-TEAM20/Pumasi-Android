@@ -1,7 +1,7 @@
 # 🎁 푸마시
 
 <br>
-<img src = "https://github.com/5jisoo/Team20-server/blob/main/image/main.png?raw=true">
+<img src = "https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/main.jpg?raw=true">
 <br>
 
 
@@ -92,12 +92,12 @@
 
 <div>
     <div align:"center">
-        <img width="49%" src="https://github.com/5jisoo/Team20-server/blob/main/image/spring.png?raw=true">
-        <img width="49%" src="https://github.com/5jisoo/Team20-server/blob/main/image/java.png?raw=true">
+        <img width="49%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/spring.png?raw=true">
+        <img width="49%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/java.png?raw=true">
     </div>
     <div align: "center">
-        <img width="49%" src="https://github.com/5jisoo/Team20-server/blob/main/image/mysql.png?raw=true">
-        <img width="49%" src="https://github.com/5jisoo/Team20-server/blob/main/image/android.png?raw=true">
+        <img width="49%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/mysql.png?raw=true">
+        <img width="49%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/android.png?raw=true">
     </div>
 </div>
 
@@ -154,13 +154,13 @@
 <table align:"center">
     <tr>
         <td width="33%">
-            <img width= "100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/login.png?raw=true">
+            <img width= "100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/login.png?raw=true">
         </td>
         <td width="33%">
-            <img width = "100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/join.png?raw=true">
+            <img width = "100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/join.png?raw=true">
         </td>
         <td width="33%">
-            <img width="100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/myPage.png?raw=true" >
+            <img width="100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/myPage.png?raw=true" >
         </td>
     </tr>
     <tr>
@@ -213,13 +213,13 @@
 <table align:"center">
     <tr>
         <td width="33%">
-            <img width= "100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/change.png?raw=true">
+            <img width= "100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/change.png?raw=true">
         </td>
         <td width="33%">
-            <img width = "100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/rentpuma.png?raw=true">
+            <img width = "100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/rentpuma.png?raw=true">
         </td>
         <td width="33%">
-            <img width="100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/puma_info.png?raw=true" >
+            <img width="100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/puma_info.png?raw=true" >
         </td>
     </tr>
     <tr>
@@ -259,16 +259,16 @@
 <table align:"center">
     <tr>
         <td width="25%">
-            <img width= "100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/pumaList.png?raw=true">
+            <img width= "100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/pumaList.png?raw=true">
         </td>
         <td width="25%">
-            <img width = "100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/pumaListByCate.png?raw=true">
+            <img width = "100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/pumaListByCate.png?raw=true">
         </td>
         <td width="25%">
-            <img width="100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/rent.png?raw=true" >
+            <img width="100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/rent.png?raw=true" >
         </td>
         <td width="25%">
-            <img width="100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/rent_day.png?raw=true" >
+            <img width="100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/rent_day.png?raw=true" >
         </td>
     </tr>
     <tr>
@@ -308,16 +308,16 @@
 <table align:"center">
     <tr>
         <td width="25%">
-            <img width= "100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/navigationBar.png?raw=true">
+            <img width= "100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/navigationBar.png?raw=true">
         </td>
         <td width="25%">
-            <img width = "100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/giveBackList.png?raw=true">
+            <img width = "100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/giveBackList.png?raw=true">
         </td>
         <td width="25%">
-            <img width="100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/giveBack.png?raw=true" >
+            <img width="100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/giveBack.png?raw=true" >
         </td>
         <td width="25%">
-            <img width="100%" src="https://github.com/5jisoo/Team20-server/blob/main/image/postPuma.png?raw=true" >
+            <img width="100%" src="https://github.com/5jisoo/2022-SMSWH-Team20-server/blob/main/image/postPuma.png?raw=true" >
         </td>
     </tr>
     <tr>
