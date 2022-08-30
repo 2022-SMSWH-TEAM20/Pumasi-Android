@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -41,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl("http://192.168.219.100:9000") //cmd 창에서 확인 가능 - ipv4 주소 :9000
+                .baseUrl("http://192.168.0.16:9000") //cmd 창에서 확인 가능 - ipv4 주소 :9000
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();
 
@@ -52,40 +53,32 @@ public class LoginActivity extends AppCompatActivity {
         layoutParams.dimAmount = 0.8f;
         getWindow().setAttributes(layoutParams);
 
-        id = binding.etxtId.getText().toString();
-        pw = binding.etxtPassword.getText().toString();
 
-        binding.btnCheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    memberApi.login(id,pw)
-                            .enqueue(new Callback<Member>() {
-                                @Override
-                                public void onResponse(Call<Member> call, Response<Member> response) {
-                                    if (response.isSuccessful() && response.body() != null)
-                                    {
-                                        loginMember.setName(response.body().getName());
-                                        loginMember.setEmail(response.body().getEmail());
-                                        loginMember.setPassword(response.body().getPassword());
-                                        loginMember.setTelNum(response.body().getTelNum());
-                                        loginMember.setProfileImage(response.body().getProfileImage());
-                                        loginMember.setId(response.body().getId());
-                                        loginInfo.setCurrentMember(loginMember);
-                                    }
-                                }
 
-                                @Override
-                                public void onFailure(Call<Member> call, Throwable t) {
-                                }
-                            });
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                } catch(IllegalStateException e){
-                    showCheckDialog();
-                }
-            }
+
+        binding.btnCheck.setOnClickListener(view -> {
+            String id = binding.etxtId.getText().toString();
+            String pw = binding.etxtPassword.getText().toString();
+
+
+            memberApi.login(id, pw).
+                    enqueue(new Callback<Member>() {
+                        @Override
+                        public void onResponse(Call<Member> call, Response<Member> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Member> call, Throwable t) {
+
+                        }
+                    });
+
+                Intent intent_main = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent_main);
+                finish();
+
+
         });
 
         binding.txtJoin.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +86,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, JoinActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 

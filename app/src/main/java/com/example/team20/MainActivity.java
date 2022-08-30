@@ -17,23 +17,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.LoginInfo;
 import com.example.team20.databinding.ActivityMainBinding;
-import com.example.team20.retrofit.MemberApi;
 import com.google.android.material.navigation.NavigationView;
-import com.google.gson.Gson;
 
 import java.io.IOException;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-import retrofit2.Call;
-import retrofit2.converter.gson.GsonConverterFactory;
-
 public class MainActivity extends AppCompatActivity {
 
-    private retrofit2.Retrofit retrofit;
     private ActivityMainBinding binding;
     private ImageView imageView;
     private ActivityResultLauncher<Intent> resultLauncher;
@@ -45,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<MainData> my_item_arrayList;
     private ArrayList<MainData> borrowing_arrayList;
     private ArrayList<MainData> borrowed_arrayList;
-    LoginInfo loginInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +52,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl("http://192.168.219.100:9000") //cmd 창에서 확인 가능 - ipv4 주소 :9000
-                .addConverterFactory(GsonConverterFactory.create(new Gson()))
-                .build();
-        MemberApi service = retrofit.create(MemberApi.class);
 
         imageView = binding.circleImgMyPage;
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        Call<byte[]> memberCall = service.changeProfileImage(loginInfo.getCurrentMember(),bitmapToByteArray(bitmap));
 
         binding.nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -119,15 +104,27 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-//푸마 임의 프로필
-//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile);
-//        byte[] byteArray = bitmapToByteArray(bitmap);
+
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.profile);
+        byte[] byteArray = bitmapToByteArray(bitmap);
 
         my_item_arrayList = new ArrayList<>();
+        my_item_arrayList.add(new MainData("시도",byteArray));
+        my_item_arrayList.add(new MainData("시도2",byteArray));
+        my_item_arrayList.add(new MainData("시도3",byteArray));
+        my_item_arrayList.add(new MainData("시도4",byteArray));
 
         borrowing_arrayList = new ArrayList<>();
+        borrowing_arrayList.add(new MainData("시도5",byteArray));
+        borrowing_arrayList.add(new MainData("시도6",byteArray));
+        borrowing_arrayList.add(new MainData("시도7",byteArray));
+        borrowing_arrayList.add(new MainData("시도8",byteArray));
 
         borrowed_arrayList = new ArrayList<>();
+        borrowed_arrayList.add(new MainData("시도9",byteArray));
+        borrowed_arrayList.add(new MainData("시도10",byteArray));
+        borrowed_arrayList.add(new MainData("시도11",byteArray));
+        borrowed_arrayList.add(new MainData("시도12",byteArray));
 
         mainMyItemAdapter = new MainMyItemAdapter(my_item_arrayList);
         binding.rcMyItem.setAdapter(mainMyItemAdapter);

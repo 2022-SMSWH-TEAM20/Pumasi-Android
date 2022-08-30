@@ -30,16 +30,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class JoinActivity extends AppCompatActivity {
     private ActivityJoinBinding binding;
     private retrofit2.Retrofit retrofit;
-    private String id;
-    private String pw;
-    private String name; //etxt_nickname
-    private byte[] img; //drawble에서
-    private String number; //etxt_number
-    private String mail;
     private Bitmap bitmap_basicProfile;
     private byte[] byteArray_basicProfile;
     RetrofitService retrofitService = new RetrofitService();
-    MemberApi memberApi = retrofitService.getRetrofit().create(MemberApi.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,52 +40,48 @@ public class JoinActivity extends AppCompatActivity {
         binding = ActivityJoinBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        retrofit = new retrofit2.Retrofit.Builder()
-                .baseUrl("http://192.168.219.100:9000") //cmd 창에서 확인 가능 - ipv4 주소 :9000
-                .addConverterFactory(GsonConverterFactory.create(new Gson()))
-                .build();
-
         bitmap_basicProfile = BitmapFactory.decodeResource(getResources(), R.drawable.basic_profile);
         byteArray_basicProfile = bitmapToByteArray(bitmap_basicProfile);
-
-        MemberApi service = retrofit.create(MemberApi.class);
-        id = binding.etxtJoinId.getText().toString();
-        pw = binding.etxtJoinPw.getText().toString();
-        name = binding.etxtNickname.getText().toString();
-//        img = byteArray_basicProfile;
-        img = null;
-        number = binding.etxtNumber.getText().toString();
-        mail = binding.etxtJoinEmail.getText().toString();
-        Member member = new Member(id, name, img, pw,mail,number);
 
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
         layoutParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         layoutParams.dimAmount = 0.8f;
         getWindow().setAttributes(layoutParams);
 
-        binding.btnJoin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Call<Member> loginResponseInfoCall = memberApi.save(member);
-                loginResponseInfoCall.enqueue(new Callback<Member>() {
-                    @Override
-                    public void onResponse(Call<Member> call, Response<Member> response) {
-                        if (response.isSuccessful()) {
-                            // 통신 성공, 원하는 정보도 제대로 받아옴 or 보냄
-                            showSuccessDialog();
-                        } else {
-                            // 통신 성공, 그러나 원하는 정보를 받아오거나 보내지 못함
-                            Toast.makeText(JoinActivity.this,id+name+pw+number+mail,Toast.LENGTH_LONG).show();
-                            showFailDialog();
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<Member> call, Throwable t) {// 통신 실패
-                        Log.d("HTTP", "로그인 연결 실패 ");
-                        Log.e("연결실패", t.getMessage());
-                    }
-                });
-            }
+        MemberApi memberApi = retrofitService.getRetrofit().create(MemberApi.class);
+
+        binding.btnJoin.setOnClickListener(view -> {
+            String id = binding.etxtJoinId.getText().toString();
+            String pw = binding.etxtJoinPw.getText().toString();
+            String name = binding.etxtNickname.getText().toString();
+            byte[] img = new byte[]{};
+            String number = binding.etxtNumber.getText().toString();
+            String mail = binding.etxtJoinEmail.getText().toString();
+
+            Member member = new Member(id, name, img, pw, mail, number);
+
+            memberApi.save(member)
+                    .enqueue(new Callback<Member>() {
+                                 @Override
+                                 public void onResponse(Call<Member> call, Response<Member> response) {
+                                     if(response.isSuccessful()){
+                                         // Toast.makeText(JoinActivity.this, "회원 가입 성공", Toast.LENGTH_SHORT).show();
+                                         Log.e("join 확인", "회원 가입 성공");
+                                         showSuccessDialog();
+                                         // finish();
+                                     } else{
+                                         Toast.makeText(JoinActivity.this, "중복 아이디", Toast.LENGTH_SHORT).show();
+                                         Log.e("join 확인", "에러 : 중복 아이디");
+                                         showFailDialog();
+                                     }
+                                 }
+
+                                 @Override
+                                 public void onFailure(Call<Member> call, Throwable t) {
+                                     Log.e("join 확인", "에러 : " + t.getMessage());
+                                 }
+                             }
+                    );
         });
 
 
@@ -105,6 +94,7 @@ public class JoinActivity extends AppCompatActivity {
             }
         });
     }
+
     void showFailDialog(){
         AlertDialog.Builder changeBuilder = new AlertDialog.Builder(JoinActivity.this)
                 .setMessage("아이디 중복입니다.")
@@ -116,6 +106,7 @@ public class JoinActivity extends AppCompatActivity {
         AlertDialog changeDlg = changeBuilder.create();
         changeDlg.show();
     }
+
     void showSuccessDialog(){
         AlertDialog.Builder changeBuilder = new AlertDialog.Builder(JoinActivity.this)
                 .setMessage("사용할 수 있는 아이디입니다.")
@@ -127,6 +118,7 @@ public class JoinActivity extends AppCompatActivity {
         AlertDialog changeDlg = changeBuilder.create();
         changeDlg.show();
     }
+
     public byte[] bitmapToByteArray(Bitmap bitmap) { //img>bitmap>byte[] 함수 필요
         ByteArrayOutputStream stream = new ByteArrayOutputStream() ;
         bitmap.compress( Bitmap.CompressFormat.JPEG, 100, stream) ;
